@@ -8,5 +8,10 @@ spring:
     username: username
     password: password
 
+logging:
+  file:
+    path: /Users/hw/Desktop/logs
+  level:
+    root: info
 
 
