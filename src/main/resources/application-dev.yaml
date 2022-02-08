@@ -11,7 +11,7 @@ spring:
 #path 보다 name 우선
 logging:
   file:
-    name: /logs/apiSample.log
+    name: logs/apiSample.log
     #path: /Users/hw/Desktop/logs/
   level:
     root: info
