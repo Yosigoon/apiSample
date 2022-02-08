@@ -1,4 +1,4 @@
-package com.api.sample.apiTest.vo;
+package com.api.sample.api.vo;
 
 import lombok.Builder;
 import lombok.Getter;
