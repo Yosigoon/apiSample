@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface SampleFeignClient {
 
     @PostMapping("/apiTestP")
-    public SampleVO test(@RequestHeader("traceUUID") String headers, SampleVO sampleVO);
+    SampleVO test(@RequestHeader("traceUUID") String headers, SampleVO sampleVO);
 }

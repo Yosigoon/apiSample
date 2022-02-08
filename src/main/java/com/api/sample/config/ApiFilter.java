@@ -14,26 +14,21 @@ import java.io.IOException;
 @WebFilter(urlPatterns = "/*")
 public class ApiFilter implements Filter {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        logger.info("=====================Filter TEST  : init ApiFilter=====================");
+    public void init(FilterConfig filterConfig) {
+        log.info("=====================Filter TEST  : init ApiFilter=====================");
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-            throws IOException, ServletException {
-
-        logger.info("=====================Filter TEST  : doFilter=====================");
-        logger.info("doFilter ApiFilter, uri : {}", ((HttpServletRequest)servletRequest).getRequestURI());
-        logger.info("=====================Filter TEST  : doFilter=====================");
-
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        log.info("=====================Filter TEST  : doFilter=====================");
+        log.info("doFilter ApiFilter, uri : {}", ((HttpServletRequest)servletRequest).getRequestURI());
+        log.info("=====================Filter TEST  : doFilter=====================");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-        logger.info("=====================Filter TEST  : destroy ApiFilter=====================");
+        log.info("=====================Filter TEST  : destroy ApiFilter=====================");
     }
 }

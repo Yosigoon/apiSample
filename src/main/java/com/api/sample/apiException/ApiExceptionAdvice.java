@@ -21,9 +21,6 @@ import java.nio.file.AccessDeniedException;
 @Slf4j
 public class ApiExceptionAdvice {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

@@ -6,6 +6,7 @@ import com.api.sample.apiTest.vo.SampleVO;
 import com.api.sample.feign.SampleFeignClient;
 import com.api.sample.threadLocal.LogThreadLocal;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
+@Slf4j
 public class ApiTestController {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     SampleFeignClient sampleFeignClient;
 
@@ -49,7 +48,7 @@ public class ApiTestController {
         sampleVO.setSampleId("RETURN TESTID");
         sampleVO.setSampleNm("RETURN TESTNM");
 
-        logger.info("=====================ThreadLocal TEST  : "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
+        log.info("=====================ThreadLocal TEST  : "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
 
         return sampleVO;
     }
@@ -59,7 +58,7 @@ public class ApiTestController {
         String ptr = null;
 
         if (ptr.equals("abc")){
-            logger.info("NullPointerException");
+            log.info("NullPointerException");
         }
 
         return "";

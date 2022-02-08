@@ -1,11 +1,10 @@
 package com.api.sample.aspect;
 
 import com.api.sample.threadLocal.LogThreadLocal;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -14,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
+@Slf4j
 public class ApiAspect {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      *   @GetMapping 설정된 메소드 또는 클래스 설정
@@ -31,9 +30,9 @@ public class ApiAspect {
     public void before(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         LogThreadLocal.myLogThreadLocal.set(request.getHeader("traceUUID"));
-        logger.info("=====================AspectJ TEST  : Before Logging Start=====================");
-        logger.info("=====================ThreadLocal TEST  : "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
-        logger.info("=====================AspectJ TEST  : Before Logging End=====================");
+        log.info("=====================AspectJ TEST  : Before Logging Start=====================");
+        log.info("=====================ThreadLocal TEST  : "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
+        log.info("=====================AspectJ TEST  : Before Logging End=====================");
     }
 
     /**
@@ -43,8 +42,8 @@ public class ApiAspect {
     @AfterReturning(pointcut = "GetMapping()", returning = "result")
     public void AfterReturning(JoinPoint joinPoint, Object result) {
         LogThreadLocal.myLogThreadLocal.remove();
-        logger.info("=====================AspectJ TEST  : AfterReturning Logging Start=====================");
-        logger.info("=====================AspectJ TEST  : AfterReturning Logging END=====================");
+        log.info("=====================AspectJ TEST  : AfterReturning Logging Start=====================");
+        log.info("=====================AspectJ TEST  : AfterReturning Logging END=====================");
     }
 
     /**
@@ -55,14 +54,14 @@ public class ApiAspect {
      */
     @Around("GetMapping()")
     public Object Around(ProceedingJoinPoint joinPoint) throws Throwable {
-        logger.info("=====================AspectJ TEST  : Around Logging Start=====================");
+        log.info("=====================AspectJ TEST  : Around Logging Start=====================");
         Object result = joinPoint.proceed();
         try {
-            logger.info("=====================AspectJ TEST  : Around Logging END=====================");
-            logger.info(result.toString());
+            log.info("=====================AspectJ TEST  : Around Logging END=====================");
+            log.info(result.toString());
         }catch (Exception e) {
-            logger.error("=====================AspectJ Around Exception=====================");
-            logger.error(e.toString());
+            log.error("=====================AspectJ Around Exception=====================");
+            log.error(e.toString());
         }
         return result;
     }
