@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-public class ApiTest {
+public class ApiTestController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
