@@ -8,10 +8,13 @@ spring:
     username: username
     password: password
 
+#path 보다 name 우선
 logging:
   file:
-    path: /Users/hw/Desktop/logs
+    name: /logs/apiSample.log
+    #path: /Users/hw/Desktop/logs/
   level:
     root: info
+    # sample.apiTest: debug 원하는 패키지 로그레벨 따로 지정가능
 
 
