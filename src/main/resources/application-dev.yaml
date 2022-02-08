@@ -1,0 +1,12 @@
+api.url: http://localhost:8080
+# api.url: http://trace-api-dev.sweettracker.net:8102
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://{host}?serverTimezone=UTC&characterEncoding=UTF-8
+    username: username
+    password: password
+
+
+
