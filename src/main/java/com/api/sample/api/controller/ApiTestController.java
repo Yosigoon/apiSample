@@ -8,10 +8,7 @@ import com.api.sample.threadLocal.LogThreadLocal;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -21,28 +18,28 @@ public class ApiTestController {
     @Autowired
     SampleFeignClient sampleFeignClient;
 
-    @RequestMapping(value = "/apiTestS", method= RequestMethod.GET)
+    @GetMapping(value = "/apiTestS")
     public String apiTest () {
         throw new ApiException(ExceptionEnum.SECURITY_01);
     }
 
-    @RequestMapping(value = "/apiTestR", method=RequestMethod.GET)
+    @GetMapping(value = "/apiTestR")
     public String apiTestR () {
         throw new ApiException(ExceptionEnum.RUNTIME_EXCEPTION);
     }
 
-    @RequestMapping(value = "/apiTestA", method=RequestMethod.GET)
+    @GetMapping(value = "/apiTestA")
     public String apiTestA () {
         throw new ApiException(ExceptionEnum.ACCESS_DENIED_EXCEPTION);
     }
 
-    @RequestMapping(value = "/apiTestI", method=RequestMethod.GET)
+    @GetMapping(value = "/apiTestI")
     public String apiTestI () {
         throw new ApiException(ExceptionEnum.INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(value = "/apiTestP", method=RequestMethod.POST)
-    public SampleVO apiTestP (@RequestBody @Valid SampleVO sampleVO) {
+    @PostMapping(value = "/apiTestP")
+    public SampleVO apiTestP (@Valid SampleVO sampleVO) {
         sampleVO.setSampleId("RETURN TESTID");
         sampleVO.setSampleNm("RETURN TESTNM");
 
@@ -51,7 +48,7 @@ public class ApiTestController {
         return sampleVO;
     }
 
-    @RequestMapping(value = "/apiTestE", method=RequestMethod.GET)
+    @GetMapping(value = "/apiTestE")
     public String apiTestE () {
         String ptr = null;
 
@@ -62,7 +59,7 @@ public class ApiTestController {
         return "";
     }
 
-    @RequestMapping(value = "/apiTestF", method=RequestMethod.GET)
+    @GetMapping(value = "/apiTestF")
     public SampleVO apiTestF () {
 
         SampleVO sampleVO = SampleVO.builder()
