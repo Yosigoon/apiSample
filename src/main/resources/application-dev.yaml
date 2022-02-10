@@ -19,7 +19,7 @@ spring:
 #path 보다 name 우선
 logging:
   pattern:
-    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+    console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line%line] - %msg%n"
   file:
     rolling-file-name: "/logs/apiSample.%d{yyyy-MM-dd}.%i"
     name: logs/apiSample.log
