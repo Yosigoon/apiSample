@@ -1,0 +1,97 @@
+# application.yml엔 공통으로 적용할 설정을 적는다.
+spring:
+  profiles: # profiles 설정
+    active: # 다른 설정이 없을 때 default 환경 값
+  datasource:
+    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: fsswms
+    password: FssWmsDev#0526
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 30
+      minimum-idle: 2
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      #enabled: true
+      force: true
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        decode404: false
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+logging:
+  pattern:
+    console: "[LOCAL] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
+  file:
+    #path 보다 name 우선순위
+    name: logs/apiSample.log
+    #path: /Users/hw/Desktop/logs/
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      file-name-pattern: "${logging.file.name}.%d{yyyy-MM-dd}.%i.gz"
+      max-history: 30
+  level:
+    root: info
+    # 원하는 패키지 로그레벨 따로 지정가능 (root 로는 feign log 자동적용 되지않아 패키지 지정필요)
+    com.api.sample.sample: debug
+    # mybatis query log
+    jdbc:
+      # 쿼리가 출력되는 포멧은 mapper 파일에 적은 그대로 출력됨
+      # 쿼리만출력
+      sqlonly: off
+      # 쿼리와 함께 쿼리 실행시간 출력
+      sqltiming: debug
+      # 쿼리 결과 테이블 로그찍어줌
+      resultsettable: off
+      # ResultSet을 제외한 JDBC 호출 정보를 로그로 남긴다.
+      audit: off
+      # ResultSet을 포함한 JDBC 호출 정보를 로그로 남깁니다.
+      resultset: off
+      # db의 연결과 해제에 관련된 로그 출력
+      connection: off
+
+## Log Pattern
+# %logger: 패키지 포함 클래스 정보
+# %logger{0}: 패키지를 제외한 클래스 이름만 출력
+# %logger{length}: Logger name을 축약할 수 있음. {length}는 최대 자리 수, ex)logger{35}
+# %-5level: 로그 레벨, -5는 출력의 고정폭 값(5글자), 로깅레벨이i nfo일 경우 빈칸 하나 추가
+# ${PID:-}: 프로세스 아이디
+# %d: 로그 기록시간 출력
+# %p: 로깅 레벨 출력
+# %F: 로깅이 발생한 프로그램 파일명 출력
+# %M: 로깅일 발생한 메소드의 명 출력
+# %line: 로깅이 발생한 호출지의 라인
+# %L: 로깅이 발생한 호출지의 라인
+# %thread: 현재 Thread 명
+# %t: 로깅이 발생한 Thread 명
+# %c: 로깅이 발생한 카테고리
+# %C: 로깅이 발생한 클래스 명 (%C{2}는 somePackage.SomeClass 가 출력됨)
+# %m: 로그 메시지
+# %msg: - 로그 메시지 (=%message)
+# %n: 줄바꿈(new line)
+# %%: %를 출력
+# %r : 애플리케이션 시작 이후부터 로깅이 발생한 시점까지의 시간(ms)
+# %d{yyyy-MM-dd-HH:mm:ss:sss}: %d는 date를 의미하며 중괄호에 들어간 문자열은 dateformat을 의미. 따라서 [2021-07-12 12:42:78]과 같은 날짜가 로그에 출력됨.
+# %-4relative: %relative는 초 아래 단위 시간(밀리초)을 나타냄. -4를하면 4칸의 출력폼을 고정으로 가지고 출력. 따라서 숫자에 따라 [2021-07-12 12:42:78:232] 혹은 [2021-07-12 12:42:78:2332]와 같이 표현됨
+
+# fileNamePattern에서 %i와 %d가 필수적으로 포함
+# %i: 롤링 순번을 자동적으로 지정함 (ex) 0, 1, 2 , 3 ...)
+
+
+api.url: http://localhost

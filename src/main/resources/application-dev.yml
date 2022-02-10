@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: fsswms
+    password: FssWmsDev#0526
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 30
+      minimum-idle: 2
+
+logging:
+  pattern:
+    console: "[DEV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
+
+
+api.url: http://localhost:8080
