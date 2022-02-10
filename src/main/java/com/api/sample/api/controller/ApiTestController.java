@@ -1,5 +1,6 @@
 package com.api.sample.api.controller;
 
+import com.api.sample.api.service.ApiSampleService;
 import com.api.sample.apiException.ApiException;
 import com.api.sample.apiException.ExceptionEnum;
 import com.api.sample.api.vo.SampleVO;
@@ -17,6 +18,9 @@ import javax.validation.Valid;
 public class ApiTestController {
     @Autowired
     SampleFeignClient sampleFeignClient;
+
+    @Autowired
+    ApiSampleService apiSampleService;
 
     @GetMapping(value = "/apiTestS")
     public String apiTest () {
@@ -38,7 +42,8 @@ public class ApiTestController {
         throw new ApiException(ExceptionEnum.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping(value = "/apiTestP")
+    //@PostMapping(value = "/apiTestP")
+    @RequestMapping(value = "/apiTestP", method=RequestMethod.POST)
     public SampleVO apiTestP (@Valid SampleVO sampleVO) {
         sampleVO.setSampleId("RETURN TESTID");
         sampleVO.setSampleNm("RETURN TESTNM");
@@ -59,7 +64,8 @@ public class ApiTestController {
         return "";
     }
 
-    @GetMapping(value = "/apiTestF")
+    //@GetMapping(value = "/apiTestF")
+    @RequestMapping(value = "/apiTestF", method=RequestMethod.GET)
     public SampleVO apiTestF () {
 
         SampleVO sampleVO = SampleVO.builder()
@@ -69,7 +75,13 @@ public class ApiTestController {
         return sampleFeignClient.test(LogThreadLocal.myLogThreadLocal.get(), sampleVO);
     }
 
-
+    @GetMapping("/getDate")
+    public String getDate (){
+        int no = 1;
+        String now = apiSampleService.getDate(no);
+        log.info("now: {}", now);
+        return now;
+    }
 }
 
 

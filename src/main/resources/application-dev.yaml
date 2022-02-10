@@ -1,12 +1,21 @@
+#api.url: http://trace-api-dev.sweettracker.net:8102
 api.url: http://localhost:8080
-# api.url: http://trace-api-dev.sweettracker.net:8102
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://{host}?serverTimezone=UTC&characterEncoding=UTF-8
-    username: username
-    password: password
+    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: fsswms
+    password: FssWmsDev#0526
+    hikari:
+      connection-timeout: 5000
+      validation-timeout: 1000
+      maximum-pool-size: 30
+      minimum-idle: 2
+
 
 #path 보다 name 우선
 logging:
@@ -15,6 +24,21 @@ logging:
     #path: /Users/hw/Desktop/logs/
   level:
     root: info
-    # sample.apiTest: debug 원하는 패키지 로그레벨 따로 지정가능
+    # 원하는 패키지 로그레벨 따로 지정가능 (root 로는 feign log 자동적용 되지않아 패키지 지정필요)
+    com.api.sample.sample: debug
 
-
+    # mybatis query log
+    jdbc:
+      # 쿼리가 출력되는 포멧은 mapper 파일에 적은 그대로 출력됨
+      # 쿼리만출력
+      sqlonly: off
+      # 쿼리와 함께 쿼리 실행시간 출력
+      sqltiming: debug
+      # 쿼리 결과 테이블 로그찍어줌
+      resultsettable: off
+      # ResultSet을 제외한 JDBC 호출 정보를 로그로 남긴다.
+      audit: off
+      # ResultSet을 포함한 JDBC 호출 정보를 로그로 남깁니다.
+      resultset: off
+      # db의 연결과 해제에 관련된 로그 출력
+      connection: off

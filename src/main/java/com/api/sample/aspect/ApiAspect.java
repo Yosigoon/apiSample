@@ -17,16 +17,30 @@ import javax.servlet.http.HttpServletRequest;
 public class ApiAspect {
 
     /**
-     *   @GetMapping 설정된 메소드 또는 클래스 설정
-     *   GetMapping 노테이션이 설정된 특정 클래스/메소드에만 AspectJ가 적용됨.
+     *   @RequestMapping 설정된 메소드 또는 클래스 설정
+     *   어노테이션이 설정된 특정 클래스/메소드에만 AspectJ가 적용됨.
      */
     @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
-    public void GetMapping(){ }
+    public void requestMapping(){ }
+
+    /**
+     *   @GetMapping 설정된 메소드 또는 클래스 설정
+     *   어노테이션이 설정된 특정 클래스/메소드에만 AspectJ가 적용됨.
+     */
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    public void getMapping(){ }
+
+    /**
+     *   @PostMapping 설정된 메소드 또는 클래스 설정
+     *   어노테이션이 설정된 특정 클래스/메소드에만 AspectJ가 적용됨.
+     */
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.PostMapping)")
+    public void postMapping(){ }
 
     /**
      * @param joinPoint
      */
-    @Before("GetMapping()")
+    @Before("requestMapping()")
     public void before(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         LogThreadLocal.myLogThreadLocal.set(request.getHeader("traceUUID"));
@@ -39,7 +53,7 @@ public class ApiAspect {
      * @param joinPoint
      * @param result
      */
-    @AfterReturning(pointcut = "GetMapping()", returning = "result")
+    @AfterReturning(pointcut = "requestMapping()", returning = "result")
     public void AfterReturning(JoinPoint joinPoint, Object result) {
         LogThreadLocal.myLogThreadLocal.remove();
         log.info("=====================AspectJ TEST  : AfterReturning Logging Start=====================");
@@ -52,7 +66,7 @@ public class ApiAspect {
      * @return
      * @throws Throwable
      */
-    @Around("GetMapping()")
+    @Around("requestMapping()")
     public Object Around(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("=====================AspectJ TEST  : Around Logging Start=====================");
         Object result = joinPoint.proceed();

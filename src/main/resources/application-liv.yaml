@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://13.124.106.229:3306/fsswms?serverTimezone=UTC&characterEncoding=UTF-8
-    username: fsswms_r
-    password: yDfaN_bVkddH.okn.yA6_h3Y

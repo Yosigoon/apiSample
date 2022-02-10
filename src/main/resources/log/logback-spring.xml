@@ -16,15 +16,10 @@
         </encoder>
     </appender>
 
-    <logger name="${LOG_PACKAGE_NAME}" level="INFO"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyyMMdd HH:mm:ss.SSS} [%thread] %-3level %logger{5} - %msg %n</pattern>
+        </encoder>
+    </appender>
 
-    <logger name="org.springframework" additivity="false">
-        <level value="INFO"/>
-        <appender-ref ref="console"/>
-    </logger>
-
-    <root level="INFO">
-        <appender-ref ref="console"/>
-        <appender-ref ref="FILE"/>
-    </root>
 </configuration>
