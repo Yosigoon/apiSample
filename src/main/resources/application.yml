@@ -33,6 +33,13 @@ feign:
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.api.sample.api.vo
+  configuration:
+    multiple-result-sets-enabled: false
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: varchar
+    default-fetch-size: 500
 
 logging:
   pattern:
@@ -94,4 +101,4 @@ logging:
 # %i: 롤링 순번을 자동적으로 지정함 (ex) 0, 1, 2 , 3 ...)
 
 
-api.url: http://localhost
+api.url: http://localhost:8080

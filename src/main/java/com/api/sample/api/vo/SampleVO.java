@@ -19,5 +19,6 @@ public class SampleVO {
     @NotNull
     private String sampleNm;
 
+    private int no;
 
 }
