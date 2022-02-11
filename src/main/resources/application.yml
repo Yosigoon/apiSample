@@ -35,11 +35,11 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.api.sample.api.vo
   configuration:
-    multiple-result-sets-enabled: false
+    multiple-result-sets-enabled: true  #한개의 구문에서 여러개의 ResultSet을 허용할지의 여부(드라이버가 해당 기능을 지원해야 함)
     map-underscore-to-camel-case: true
-    call-setters-on-nulls: true
+    call-setters-on-nulls: true #전달받은 값이 null일때 setter or map.put 메소드 호출여부 (에러방지)
     jdbc-type-for-null: varchar
-    default-fetch-size: 500
+    default-fetch-size: 1000 #설정하지 않으면 기본 값은 10 (ex: fetchSize 가 10 이면 5000건을 조회하면 실제 db에서 500번을 조회)
 
 logging:
   pattern:
