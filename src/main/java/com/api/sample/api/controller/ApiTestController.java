@@ -82,10 +82,15 @@ public class ApiTestController {
         log.info("now: {}", now);
         return now;
     }
+
+    /**
+     * lucy filter test
+     * @param sampleVO
+     * @return
+     */
+    @GetMapping("/test/lucy")
+    public SampleVO testLucy(SampleVO sampleVO) {
+        log.info("SampleVO: {}", sampleVO);
+        return sampleVO;
+    }
 }
-
-
-
-
-
-
