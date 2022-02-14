@@ -1,2 +1,2 @@
 # API Sample
-spring boot api sample [yml(yaml), feign, mybatis, log4jdbc]
+spring boot api sample [yml(yaml), feign, mybatis, log4jdbc, lucy-filter]
