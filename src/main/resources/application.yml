@@ -3,15 +3,24 @@ spring:
   profiles: # profiles 설정
     active: # 다른 설정이 없을 때 default 환경 값
   datasource:
-    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: fsswms
-    password: FssWmsDev#0526
+    #jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
+    #username: fsswms
+    #password: FssWmsDev#0526
+    jdbc-url: ENC(0LuZS1W87oTxTWHj4em1gSi9gpLwkMqI+hFX0Cij0MZ6CvFo6vqOSeghDyU1ztJNefe+Cz8138DASF+lqF8UiA==)
+    username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
+    password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
     hikari:
       connection-timeout: 5000
       validation-timeout: 1000
       maximum-pool-size: 30
       minimum-idle: 2
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    #DEV
+    password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
 
 server:
   port: 8080
@@ -41,6 +50,7 @@ mybatis:
     jdbc-type-for-null: varchar
     default-fetch-size: 1000 #설정하지 않으면 기본 값은 10 (ex: fetchSize 가 10 이면 5000건을 조회하면 실제 db에서 500번을 조회)
 
+
 logging:
   pattern:
     console: "[LOCAL] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
@@ -56,7 +66,7 @@ logging:
   level:
     root: info
     # 원하는 패키지 로그레벨 따로 지정가능 (root 로는 feign log 자동적용 되지않아 패키지 지정필요)
-    com.api.sample.sample: debug
+    com.api.sample: debug
     # mybatis query log
     jdbc:
       # 쿼리가 출력되는 포멧은 mapper 파일에 적은 그대로 출력됨
@@ -65,7 +75,7 @@ logging:
       # 쿼리와 함께 쿼리 실행시간 출력
       sqltiming: debug
       # 쿼리 결과 테이블 로그찍어줌
-      resultsettable: off
+      resultsettable: info
       # ResultSet을 제외한 JDBC 호출 정보를 로그로 남긴다.
       audit: off
       # ResultSet을 포함한 JDBC 호출 정보를 로그로 남깁니다.

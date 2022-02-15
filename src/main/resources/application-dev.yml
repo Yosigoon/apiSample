@@ -1,14 +1,23 @@
 spring:
   datasource:
-    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: fsswms
-    password: FssWmsDev#0526
+    #jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
+    #username: fsswms
+    #password: FssWmsDev#0526
+    jdbc-url: ENC(0LuZS1W87oTxTWHj4em1gSi9gpLwkMqI+hFX0Cij0MZ6CvFo6vqOSeghDyU1ztJNefe+Cz8138DASF+lqF8UiA==)
+    username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
+    password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
     hikari:
       connection-timeout: 5000
       validation-timeout: 1000
       maximum-pool-size: 30
       minimum-idle: 2
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    #DEV
+    password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
 
 logging:
   pattern:

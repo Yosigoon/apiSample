@@ -10,11 +10,15 @@ spring:
       maximum-pool-size: 30
       minimum-idle: 2
 
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    # LIV
+    password: ZnNzd21zTGl2S2V5IzA5MDZmc3N3bXNMaXZLZXkjJCU=
+
 
 logging:
   pattern:
-    console: "[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
+    console: "[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
 
-
-#api.url: http://trace-api-dev.sweettracker.net:8102
 api.url: http://localhost:8080

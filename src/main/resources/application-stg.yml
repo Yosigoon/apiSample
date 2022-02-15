@@ -10,6 +10,11 @@ spring:
       maximum-pool-size: 30
       minimum-idle: 2
 
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    # STG
+    password: ZnNzd21zd21zMTIzNDU2Nzg5MGFiY2RlZmZzc3dtczI=
 
 logging:
   pattern:
