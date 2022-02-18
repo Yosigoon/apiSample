@@ -1,14 +1,15 @@
 package com.api.sample.api.vo;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@Getter
-@Setter
+@Data
 @Builder
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class SampleVO {
@@ -17,7 +18,6 @@ public class SampleVO {
     private String sampleId;
     @NotNull
     private String sampleNm;
-
     private int no;
 
 }

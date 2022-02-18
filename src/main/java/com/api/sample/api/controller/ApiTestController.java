@@ -44,7 +44,7 @@ public class ApiTestController {
 
     //@PostMapping(value = "/apiTestP")
     @RequestMapping(value = "/apiTestP", method=RequestMethod.POST)
-    public SampleVO apiTestP (@Valid SampleVO sampleVO) {
+    public SampleVO apiTestP (@RequestBody @Valid SampleVO sampleVO) {
         sampleVO.setSampleId("RETURN TESTID");
         sampleVO.setSampleNm("RETURN TESTNM");
 
@@ -69,8 +69,8 @@ public class ApiTestController {
     public SampleVO apiTestF () {
 
         SampleVO sampleVO = SampleVO.builder()
-                .sampleId("yosi")
-                .sampleNm("이형원")
+                .sampleId("yosigoon")
+                .sampleNm("hwlee")
                 .build();
         return sampleFeignClient.test(LogThreadLocal.myLogThreadLocal.get(), sampleVO);
     }

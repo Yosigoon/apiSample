@@ -34,7 +34,12 @@ server:
 feign:
   client:
     config:
-      feignName:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        decode404: false
+      sample:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
