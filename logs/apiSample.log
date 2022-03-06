@@ -1,0 +1,118 @@
+2022-03-06 14:35:57.542  INFO 49423 --- [main] com.api.sample.SampleApplication         : Starting SampleApplication using Java 1.8.0_311 on ihyeong-won-ui-MacBookPro.local with PID 49423 (/Users/hw/Desktop/project/apiSample/target/classes started by hw in /Users/hw/Desktop/project/apiSample)
+2022-03-06 14:35:57.545 DEBUG 49423 --- [main] com.api.sample.SampleApplication         : Running with Spring Boot v2.5.4, Spring v5.3.9
+2022-03-06 14:35:57.545  INFO 49423 --- [main] com.api.sample.SampleApplication         : The following profiles are active: dev
+2022-03-06 14:35:58.639  INFO 49423 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=215a5900-846d-3560-9269-05f528822c83
+2022-03-06 14:35:58.756  INFO 49423 --- [main] ptablePropertiesBeanFactoryPostProcessor : Post-processing PropertySource instances
+2022-03-06 14:35:58.792  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+2022-03-06 14:35:58.794  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-03-06 14:35:58.794  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+2022-03-06 14:35:58.794  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemProperties [org.springframework.core.env.PropertiesPropertySource] to EncryptableMapPropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource cachedrandom [org.springframework.cloud.util.random.CachedRandomPropertySource] to EncryptablePropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource springCloudClientHostInfo [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application-dev.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-03-06 14:35:58.795  INFO 49423 --- [main] c.u.j.EncryptablePropertySourceConverter : Converting PropertySource Config resource 'class path resource [application.yml]' via location 'optional:classpath:/' [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+2022-03-06 14:35:58.878  INFO 49423 --- [main] c.u.j.filter.DefaultLazyPropertyFilter   : Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+2022-03-06 14:35:58.933  INFO 49423 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$4c53b1e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-03-06 14:35:58.980  INFO 49423 --- [main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2022-03-06 14:35:59.195  INFO 49423 --- [main] c.u.j.r.DefaultLazyPropertyResolver      : Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+2022-03-06 14:35:59.202  INFO 49423 --- [main] c.u.j.d.DefaultLazyPropertyDetector      : Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+2022-03-06 14:35:59.560  INFO 49423 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-03-06 14:35:59.573  INFO 49423 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-06 14:35:59.573  INFO 49423 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2022-03-06 14:35:59.653  INFO 49423 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-06 14:35:59.655  INFO 49423 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2052 ms
+2022-03-06 14:35:59.775  INFO 49423 --- [main] com.api.sample.config.ApiFilter          : =====================Filter TEST  : init ApiFilter=====================
+2022-03-06 14:36:00.242  INFO 49423 --- [main] c.u.j.encryptor.DefaultLazyEncryptor     : Found Custom Encryptor Bean org.jasypt.encryption.pbe.PooledPBEStringEncryptor@75eaba95 with name: jasyptStringEncryptor
+2022-03-06 14:36:01.281  INFO 49423 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-06 14:36:01.293  INFO 49423 --- [main] com.api.sample.SampleApplication         : Started SampleApplication in 4.487 seconds (JVM running for 5.507)
+2022-03-06 14:36:35.820  INFO 49423 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-06 14:36:35.821  INFO 49423 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-06 14:36:35.827  INFO 49423 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2022-03-06 14:36:35.833  INFO 49423 --- [http-nio-8080-exec-2] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:36:35.834  INFO 49423 --- [http-nio-8080-exec-2] com.api.sample.config.ApiFilter          : doFilter ApiFilter, uri : /add_invoice
+2022-03-06 14:36:35.834  INFO 49423 --- [http-nio-8080-exec-2] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:36:36.016  INFO 49423 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-06 14:36:37.003  INFO 49423 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-06 14:36:37.033 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.a.m.S.insertInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.insertInvoiceHistory */
+2022-03-06 14:36:37.063 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.a.m.S.insertInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:36:37.139 DEBUG 49423 --- [http-nio-8080-exec-2] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.insertInvoiceHistory */
+ {executed in 74 msec}
+2022-03-06 14:36:37.180 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> POST http://trace-api-dev.sweettracker.net:8102/add_invoice HTTP/1.1
+2022-03-06 14:36:37.181 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Accept: application/json
+2022-03-06 14:36:37.181 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Length: 186
+2022-03-06 14:36:37.181 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Type: application/json
+2022-03-06 14:36:37.181 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:36:37.182 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"num":"31467129846","code":"04","fid":"0431467129846","callback_url":"http://49.1.133.140:8080/invoice/callback","callback_type":"json","tier":"testuser","key":"testuser","type":"json"}
+2022-03-06 14:36:37.182 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> END HTTP (186-byte body)
+2022-03-06 14:36:37.550 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- HTTP/1.1 200 (351ms)
+2022-03-06 14:36:37.551 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-length: 126
+2022-03-06 14:36:37.552 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-type: application/json;charset=UTF-8
+2022-03-06 14:36:37.552 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] date: Sun, 06 Mar 2022 05:36:37 GMT
+2022-03-06 14:36:37.553 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:36:37.559 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"fid":"0431467129846","e_code":"02","success":false,"num":"31467129846","e_message":"송장번호 규칙에 어긋납니다"}
+2022-03-06 14:36:37.559 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- END HTTP (126-byte body)
+2022-03-06 14:36:37.653 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.a.m.S.updateInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.updateInvoiceHistory */
+2022-03-06 14:36:37.655 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.a.m.S.updateInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:36:37.747 DEBUG 49423 --- [http-nio-8080-exec-2] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.updateInvoiceHistory */
+ {executed in 86 msec}
+2022-03-06 14:36:37.749 DEBUG 49423 --- [http-nio-8080-exec-2] c.a.s.a.m.S.updateInvoiceHistory         : <==    Updates: 0
+2022-03-06 14:36:41.839  INFO 49423 --- [http-nio-8080-exec-3] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:36:41.841  INFO 49423 --- [http-nio-8080-exec-3] com.api.sample.config.ApiFilter          : doFilter ApiFilter, uri : /add_invoice
+2022-03-06 14:36:41.843  INFO 49423 --- [http-nio-8080-exec-3] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:36:41.946 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.a.m.S.insertInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.insertInvoiceHistory */
+2022-03-06 14:36:41.949 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.a.m.S.insertInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:36:42.065 DEBUG 49423 --- [http-nio-8080-exec-3] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.insertInvoiceHistory */
+ {executed in 104 msec}
+2022-03-06 14:36:42.076 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> POST http://trace-api-dev.sweettracker.net:8102/add_invoice HTTP/1.1
+2022-03-06 14:36:42.077 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Accept: application/json
+2022-03-06 14:36:42.077 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Length: 182
+2022-03-06 14:36:42.077 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Type: application/json
+2022-03-06 14:36:42.077 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:36:42.078 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"num":"314671246","code":"04","fid":"04314671246","callback_url":"http://49.1.133.140:8080/invoice/callback","callback_type":"json","tier":"testuser","key":"testuser","type":"json"}
+2022-03-06 14:36:42.078 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> END HTTP (182-byte body)
+2022-03-06 14:36:42.167 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- HTTP/1.1 200 (86ms)
+2022-03-06 14:36:42.169 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-length: 122
+2022-03-06 14:36:42.170 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-type: application/json;charset=UTF-8
+2022-03-06 14:36:42.171 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] date: Sun, 06 Mar 2022 05:36:42 GMT
+2022-03-06 14:36:42.171 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:36:42.173 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"fid":"04314671246","e_code":"02","success":false,"num":"314671246","e_message":"송장번호 규칙에 어긋납니다"}
+2022-03-06 14:36:42.173 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- END HTTP (122-byte body)
+2022-03-06 14:36:42.183 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.a.m.S.updateInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.updateInvoiceHistory */
+2022-03-06 14:36:42.185 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.a.m.S.updateInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:36:42.273 DEBUG 49423 --- [http-nio-8080-exec-3] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.updateInvoiceHistory */
+ {executed in 87 msec}
+2022-03-06 14:36:42.282 DEBUG 49423 --- [http-nio-8080-exec-3] c.a.s.a.m.S.updateInvoiceHistory         : <==    Updates: 0
+2022-03-06 14:37:00.598  INFO 49423 --- [http-nio-8080-exec-4] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:37:00.618  INFO 49423 --- [http-nio-8080-exec-4] com.api.sample.config.ApiFilter          : doFilter ApiFilter, uri : /add_invoice
+2022-03-06 14:37:00.620  INFO 49423 --- [http-nio-8080-exec-4] com.api.sample.config.ApiFilter          : =====================Filter TEST  : doFilter=====================
+2022-03-06 14:37:00.698 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.a.m.S.insertInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.insertInvoiceHistory */
+2022-03-06 14:37:00.701 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.a.m.S.insertInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:37:00.759 DEBUG 49423 --- [http-nio-8080-exec-4] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.insertInvoiceHistory */
+ {executed in 55 msec}
+2022-03-06 14:37:00.775 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> POST http://trace-api-dev.sweettracker.net:8102/add_invoice HTTP/1.1
+2022-03-06 14:37:00.776 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Accept: application/json
+2022-03-06 14:37:00.777 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Length: 188
+2022-03-06 14:37:00.778 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] Content-Type: application/json
+2022-03-06 14:37:00.780 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:37:00.781 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"num":"553207203790","code":"04","fid":"04553207203790","callback_url":"http://49.1.133.140:8080/invoice/callback","callback_type":"json","tier":"testuser","key":"testuser","type":"json"}
+2022-03-06 14:37:00.782 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] ---> END HTTP (188-byte body)
+2022-03-06 14:37:00.937 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- HTTP/1.1 200 (153ms)
+2022-03-06 14:37:00.944 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-length: 60
+2022-03-06 14:37:00.945 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] content-type: application/json;charset=UTF-8
+2022-03-06 14:37:00.946 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] date: Sun, 06 Mar 2022 05:37:00 GMT
+2022-03-06 14:37:00.948 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] 
+2022-03-06 14:37:00.950 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] {"fid":"04553207203790","success":true,"num":"553207203790"}
+2022-03-06 14:37:00.950 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.feign.SweettrackerFeignClient      : [SweettrackerFeignClient#callAddInvoice] <--- END HTTP (60-byte body)
+2022-03-06 14:37:00.952 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.a.m.S.updateInvoiceHistory         : ==>  Preparing: /* SweettrackerMapper.updateInvoiceHistory */
+2022-03-06 14:37:00.953 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.a.m.S.updateInvoiceHistory         : ==> Parameters: 
+2022-03-06 14:37:01.023 DEBUG 49423 --- [http-nio-8080-exec-4] jdbc.sqltiming                           :  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. /* SweettrackerMapper.updateInvoiceHistory */
+ {executed in 68 msec}
+2022-03-06 14:37:01.025 DEBUG 49423 --- [http-nio-8080-exec-4] c.a.s.a.m.S.updateInvoiceHistory         : <==    Updates: 0

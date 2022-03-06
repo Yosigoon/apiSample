@@ -1,12 +1,9 @@
 spring:
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    #jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
-    #username: fsswms
-    #password: FssWmsDev#0526
-    jdbc-url: ENC(0LuZS1W87oTxTWHj4em1gSi9gpLwkMqI+hFX0Cij0MZ6CvFo6vqOSeghDyU1ztJNefe+Cz8138DASF+lqF8UiA==)
-    username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
-    password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
+    jdbc-url: ENC(KlSqGkHe83WpeVcuHevPYkZZYuTRXmvapPndd3m0Zf+Dau5oeHlEPKpHB1hI/iLOjFcrZWyh8cVXJiULxLykpg==)
+    username: ENC(ZURfTb9YJ6F7RMYvEZbqKA==)
+    password: ENC(WvtAGVt59Exf3yv9mA1iCk6ksCSeGYvC)
     hikari:
       connection-timeout: 5000
       validation-timeout: 1000
@@ -16,12 +13,18 @@ spring:
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-    #DEV
-    password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
+    # STG
+    password: ZnNzd21zd21zMTIzNDU2Nzg5MGFiY2RlZmZzc3dtczI=
 
 logging:
   pattern:
-    console: "[DEV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
+    console: "[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
 
 
-api.url: http://localhost:8080
+sweettracker.url: http://trace-api-dev.sweettracker.net:8102
+sweet:
+  callback_url: http://49.1.133.140:8080/invoice/callback
+  callback_type: json
+  type: json
+  tier: testuser
+  key: testuser

@@ -1,9 +1,9 @@
 spring:
   datasource:
-    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: fsswms
-    password: FssWmsDev#0526
+    jdbc-url: ENC(KEopqKdbpxU95+zpFTe4BkMTC9ZdssJ9xNxKWSKrrh34jfiUR/TM7BkbFbiC63R0bzHTnGbJjcE=)
+    username: ENC(BH/64B+Su8+cDVObzGV8PA==)
+    password: ENC(jD+7CTw8oRhHV1GmluohTMhft90W+EP6)
     hikari:
       connection-timeout: 5000
       validation-timeout: 1000
@@ -21,4 +21,10 @@ logging:
   pattern:
     console: "[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
 
-api.url: http://localhost:8080
+sweettracker.url: http://trace-api.sweettracker.net
+sweet:
+  callback_url:
+  callback_type: json
+  type: json
+  tier:
+  key:

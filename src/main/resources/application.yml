@@ -117,3 +117,10 @@ logging:
 
 
 api.url: http://localhost:8080
+sweettracker.url: http://trace-api-dev.sweettracker.net:8102
+sweet:
+  callback_url: http://49.1.133.140:8080/invoice/callback
+  callback_type: json
+  type: json
+  tier: testuser
+  key: testuser
