@@ -7,8 +7,8 @@ import com.api.sample.api.vo.sweettracker.CallbackAddInvoiceRequestVO;
 import com.api.sample.api.vo.sweettracker.CallbackAddInvoiceResponseVO;
 import com.api.sample.api.vo.sweettracker.fms.AddInvoiceListRequestParamVo;
 import com.api.sample.api.vo.sweettracker.fms.AddInvoiceRequestParamVo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class SweettrackerController {
 
-    @Autowired
-    SweettrackerService sweettrackerService;
+    private final SweettrackerService sweettrackerService;
 
     /**
      * 운송장 추적 요청 API

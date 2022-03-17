@@ -6,8 +6,8 @@ import com.api.sample.api.vo.sweettracker.fms.AddInvoiceListRequestParamVo;
 import com.api.sample.api.vo.sweettracker.fms.AddInvoiceRequestParamVo;
 import com.api.sample.feign.SweettrackerFeignClient;
 import com.api.sample.util.DeliveryUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,7 @@ import java.util.List;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class SweettrackerService {
 
     @Value("${sweet.callback_url}")
@@ -33,11 +34,10 @@ public class SweettrackerService {
     @Value("${sweet.type}")
     private String type;
 
-    @Autowired
-    SweettrackerMapper sweettrackerMapper;
+    private final SweettrackerMapper sweettrackerMapper;
 
-    @Autowired
-    SweettrackerFeignClient sweettrackerFeignClient;
+    private final SweettrackerFeignClient sweettrackerFeignClient;
+
 
     /**
      * 운송장 추적 요청 API

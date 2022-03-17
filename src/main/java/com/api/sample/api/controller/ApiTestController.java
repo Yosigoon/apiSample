@@ -1,26 +1,25 @@
 package com.api.sample.api.controller;
 
 import com.api.sample.api.service.ApiSampleService;
+import com.api.sample.api.vo.SampleVO;
 import com.api.sample.apiException.ApiException;
 import com.api.sample.apiException.ExceptionEnum;
-import com.api.sample.api.vo.SampleVO;
 import com.api.sample.feign.SampleFeignClient;
 import com.api.sample.threadLocal.LogThreadLocal;
-
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class ApiTestController {
-    @Autowired
-    SampleFeignClient sampleFeignClient;
 
-    @Autowired
-    ApiSampleService apiSampleService;
+    private final SampleFeignClient sampleFeignClient;
+
+    private final ApiSampleService apiSampleService;
 
     @GetMapping(value = "/apiTestS")
     public String apiTest () {
