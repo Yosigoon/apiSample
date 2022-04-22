@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>[LOCAL] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+        </encoder>
+        <springProfile name="dev">
+            <encoder>
+                <pattern>[DEV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+        <springProfile name="stg">
+            <encoder>
+                <pattern>[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+        <springProfile name="liv">
+            <encoder>
+                <pattern>[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+    </appender>
+
+    <springProperty name="filePath" source="logging.file.path"/>
+
+    <appender name="LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${filePath}/apiSample.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${filePath}/apiSample.log-%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[LOCAL] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+        </encoder>
+        <springProfile name="dev">
+            <encoder>
+                <pattern>[DEV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+        <springProfile name="stg">
+            <encoder>
+                <pattern>[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+        <springProfile name="liv">
+            <encoder>
+                <pattern>[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+            </encoder>
+        </springProfile>
+    </appender>
+
+    <logger name="com.delivery.gateway" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="LOG_FILE"/>
+    </logger>
+
+    <logger name="jdbc" level="OFF"/>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.sqltiming" level="DEBUG"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.resultsettable" level="DEBUG"/>
+    <logger name="jdbc.connection" level="OFF"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="LOG_FILE"/>
+    </root>
+
+</configuration>

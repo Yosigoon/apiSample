@@ -1,13 +1,13 @@
 package com.api.sample.api.vo.sweettracker;
 
+import com.api.sample.api.vo.CommonSystemVO;
 import lombok.Data;
 
 @Data
-public class CallbackAddInvoiceRequestVO {
+public class CallbackAddInvoiceRequestVO extends CommonSystemVO {
     private String secret_value;        //인증키(현재사용안함)
     private String fid;                 //식별값
     private String invoice_no;          //운송장번호
-    private int level;                  //배송단계(1~6단계), -99 배송 스캔 오류
     private String time_trans;          //택배사 처리시간
     private String time_sweet;          //스윗트래커 등록시간
     private String where;               //택배 위치

@@ -2,22 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.api.sample.api.mapper.SweettrackerMapper">
 
-    <select id="insertInvoiceHistory" parameterType="AddInvoiceRequestVO" resultType="int">
+    <select id="insertInvoiceHistory" parameterType="AddInvoiceRequestVO">
         /* SweettrackerMapper.insertInvoiceHistory */
+        INSERT INTO tb_trace_req_invoice_history (
+                                                   F_ID
+                                                 , COMCODE
+                                                 , NUM
+                                                 , REG_ID
+                                                 , MOD_ID
+        ) VALUES (
+                     #{fid}
+                 , #{code}
+                 , #{num}
+                 , #{regId}
+                 , #{modId}
+                 );
     </select>
 
     <update id="updateInvoiceHistory" parameterType="AddInvoiceResponseVO">
         /* SweettrackerMapper.updateInvoiceHistory */
+        UPDATE tb_trace_req_invoice_history
+        SET  IS_SUCCESS = #{success}
+          , E_CODE = #{e_code}
+          , E_MESSAGE = #{e_message}
+          , MOD_TIME = now()
+        WHERE F_ID = #{fid}
     </update>
 
-    <select id="insertInvoiceListHistory" parameterType="InvoiceRequestListVO" resultType="int">
-        /* SweettrackerMapper.insertInvoiceListHistory */
-    </select>
-
-    <update id="updateInvoiceListHistory" parameterType="AddInvoiceListResponseVO">
-        /* SweettrackerMapper.updateInvoiceListHistory */
-    </update>
-
+    <insert id="insertTraceCommon" parameterType="CallbackAddInvoiceRequestVO">
+        /* SweettrackerMapper.insertTraceCommon */
+        INSERT INTO tb_trace_common (
+            F_ID
+            , LEVEL
+            , COMCODE
+            , NUM
+            , TIME_TRANS
+            , TIME_SWEET
+            , LOCATION
+            , TELNO_OFFICE
+            , TELNO_MAN
+            , DETAILS
+            , MAN
+            , ESTMATE
+            , REG_ID
+            , MOD_ID
+        ) VALUES (
+             #{fid}
+             , #{level}
+             , #{comcode}
+             , #{invoice_no}
+             , #{time_trans}
+             , #{time_sweet}
+             , #{where}
+             , #{telno_office}
+             , #{telno_man}
+             , #{details}
+             , #{man}
+             , #{estmate}
+             , #{regId}
+             , #{modId}
+         )
+    </insert>
 
 
 </mapper>

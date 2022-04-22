@@ -1,14 +1,20 @@
+greeting:
+  message: this is main application-liv.yaml
+
 spring:
   datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    jdbc-url: ENC(KEopqKdbpxU95+zpFTe4BkMTC9ZdssJ9xNxKWSKrrh34jfiUR/TM7BkbFbiC63R0bzHTnGbJjcE=)
-    username: ENC(BH/64B+Su8+cDVObzGV8PA==)
-    password: ENC(jD+7CTw8oRhHV1GmluohTMhft90W+EP6)
+    dbcp2:
+      validation-query: SELECT 1
+      test-on-borrow: true
     hikari:
-      connection-timeout: 5000
-      validation-timeout: 1000
-      maximum-pool-size: 30
-      minimum-idle: 2
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: ENC(yp1DmLuQyEZaniiqFMIeDL4IwA7/2oc0JC11E29GQoaNZH29JgH7cn6iK5u4u+Hj+SOgal6UjkWrZTpuCfn0zh5/5f7dTd8muawzAt0qMhc=) #autoReconnect=true 적용
+      username: ENC(BH/64B+Su8+cDVObzGV8PA==)
+      password: ENC(jD+7CTw8oRhHV1GmluohTMhft90W+EP6)
+      max-lifetime: 600000 #default 30분(1800000 ms) < mysql wait_timeout (default: 28800) 8시간보다 작게
+      connection-timeout: 30000 #default 30초
+      validation-timeout: 5000 #default 5초
+      maximum-pool-size: 3
 
 jasypt:
   encryptor:
@@ -16,14 +22,9 @@ jasypt:
     # LIV
     password: ZnNzd21zTGl2S2V5IzA5MDZmc3N3bXNMaXZLZXkjJCU=
 
-
-logging:
-  pattern:
-    console: "[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
-
 sweettracker.url: http://trace-api.sweettracker.net
 sweet:
-  callback_url:
+  callback_url: https://delivery.fassto.ai/sweet/callback
   callback_type: json
   type: json
   tier:

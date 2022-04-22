@@ -8,7 +8,7 @@ public class CallbackAddInvoiceResponseVO {
     private String message = "success";
 
     public CallbackAddInvoiceResponseVO(CallbackAddInvoiceRequestVO callbackAddInvoiceRequestVO) {
-        if(callbackAddInvoiceRequestVO.getLevel() == -99){
+        if("-99".equals(callbackAddInvoiceRequestVO.getLevel())){
             setCode(false);
             setMessage("fail");
         }

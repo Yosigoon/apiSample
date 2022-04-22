@@ -1,11 +1,12 @@
 package com.api.sample.api.vo.sweettracker;
 
+import com.api.sample.api.vo.CommonSystemVO;
 import lombok.Builder;
 import lombok.Data;
 
 @Builder
 @Data
-public class AddInvoiceRequestVO {
+public class AddInvoiceRequestVO extends CommonSystemVO {
     private String num;             //운송장번호(공백또는 "-"제거)
     private String code;            //배송사 코드
     private String fid;             //해당 건의 결과 전송에 쓰이는 식별 값 ( 유니크한 값 )

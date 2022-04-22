@@ -1,20 +1,22 @@
 # application.yml엔 공통으로 적용할 설정을 적는다.
+greeting:
+  message: this is main application-local.yaml
+
 spring:
-  profiles: # profiles 설정
-    active: # 다른 설정이 없을 때 default 환경 값
   datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    #jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
-    #username: fsswms
-    #password: FssWmsDev#0526
-    jdbc-url: ENC(0LuZS1W87oTxTWHj4em1gSi9gpLwkMqI+hFX0Cij0MZ6CvFo6vqOSeghDyU1ztJNefe+Cz8138DASF+lqF8UiA==)
-    username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
-    password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
+    dbcp2:
+      validation-query: SELECT 1
+      test-on-borrow: true
     hikari:
-      connection-timeout: 5000
-      validation-timeout: 1000
-      maximum-pool-size: 30
-      minimum-idle: 2
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: ENC(tfJcchAIF/rSuejsN6D79T4GjPL5Z89KTlA4TfBEjCyJUQJz8dEwznUGG/R9UjAhN5HClhZK7Ua6ccbTB7bhQexjZ31uCXkg8ftUJrUNfc0=) #autoReconnect=true 적용
+      username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
+      password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
+      max-lifetime: 600000 #default 30분(1800000 ms) < mysql wait_timeout (default: 28800) 8시간보다 작게
+      connection-timeout: 30000 #default 30초
+      validation-timeout: 5000 #default 5초
+      maximum-pool-size: 3
+
 
 jasypt:
   encryptor:
@@ -37,13 +39,15 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
+        loggerLevel: none
+        decode404: false
+
+      delivery-gateway:
+        connectTimeout: 10000
+        readTimeout: 10000
         loggerLevel: full
         decode404: false
-      sample:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
-        decode404: false
+
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
@@ -57,36 +61,8 @@ mybatis:
 
 
 logging:
-  pattern:
-    console: "[LOCAL] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
   file:
-    #path 보다 name 우선순위
-    name: logs/apiSample.log
-    #path: /Users/hw/Desktop/logs/
-  logback:
-    rollingpolicy:
-      max-file-size: 100MB
-      file-name-pattern: "${logging.file.name}.%d{yyyy-MM-dd}.%i.gz"
-      max-history: 30
-  level:
-    root: info
-    # 원하는 패키지 로그레벨 따로 지정가능 (root 로는 feign log 자동적용 되지않아 패키지 지정필요)
-    com.api.sample: debug
-    # mybatis query log
-    jdbc:
-      # 쿼리가 출력되는 포멧은 mapper 파일에 적은 그대로 출력됨
-      # 쿼리만출력
-      sqlonly: off
-      # 쿼리와 함께 쿼리 실행시간 출력
-      sqltiming: debug
-      # 쿼리 결과 테이블 로그찍어줌
-      resultsettable: info
-      # ResultSet을 제외한 JDBC 호출 정보를 로그로 남긴다.
-      audit: off
-      # ResultSet을 포함한 JDBC 호출 정보를 로그로 남깁니다.
-      resultset: off
-      # db의 연결과 해제에 관련된 로그 출력
-      connection: off
+    path: ./logs
 
 ## Log Pattern
 # %logger: 패키지 포함 클래스 정보
@@ -115,12 +91,14 @@ logging:
 # fileNamePattern에서 %i와 %d가 필수적으로 포함
 # %i: 롤링 순번을 자동적으로 지정함 (ex) 0, 1, 2 , 3 ...)
 
-
 api.url: http://localhost:8080
 sweettracker.url: http://trace-api-dev.sweettracker.net:8102
 sweet:
-  callback_url: http://49.1.133.140:8080/invoice/callback
+  callback_url: https://dev-delivery.fassto.ai/sweet/callback
   callback_type: json
   type: json
   tier: testuser
   key: testuser
+
+
+

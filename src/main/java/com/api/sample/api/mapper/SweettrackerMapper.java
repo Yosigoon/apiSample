@@ -1,9 +1,6 @@
 package com.api.sample.api.mapper;
 
-import com.api.sample.api.vo.sweettracker.AddInvoiceListResponseVO;
-import com.api.sample.api.vo.sweettracker.AddInvoiceRequestVO;
-import com.api.sample.api.vo.sweettracker.AddInvoiceResponseVO;
-import com.api.sample.api.vo.sweettracker.InvoiceRequestListVO;
+import com.api.sample.api.vo.sweettracker.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,7 +11,5 @@ public interface SweettrackerMapper {
 
     void updateInvoiceHistory(AddInvoiceResponseVO addInvoiceResponseVO);
 
-    void insertInvoiceListHistory(List<InvoiceRequestListVO> invoiceRequestList);
-
-    void updateInvoiceListHistory(AddInvoiceListResponseVO addInvoiceListResponseVO);
+    void insertTraceCommon(CallbackAddInvoiceRequestVO callbackAddInvoiceRequestVO);
 }

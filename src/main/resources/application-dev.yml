@@ -1,29 +1,30 @@
+greeting:
+  message: this is main application-dev.yaml
+
 spring:
   datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    jdbc-url: ENC(KlSqGkHe83WpeVcuHevPYkZZYuTRXmvapPndd3m0Zf+Dau5oeHlEPKpHB1hI/iLOjFcrZWyh8cVXJiULxLykpg==)
-    username: ENC(ZURfTb9YJ6F7RMYvEZbqKA==)
-    password: ENC(WvtAGVt59Exf3yv9mA1iCk6ksCSeGYvC)
+    dbcp2:
+      validation-query: SELECT 1
+      test-on-borrow: true
     hikari:
-      connection-timeout: 5000
-      validation-timeout: 1000
-      maximum-pool-size: 30
-      minimum-idle: 2
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: ENC(tfJcchAIF/rSuejsN6D79T4GjPL5Z89KTlA4TfBEjCyJUQJz8dEwznUGG/R9UjAhN5HClhZK7Ua6ccbTB7bhQexjZ31uCXkg8ftUJrUNfc0=) #autoReconnect=true 적용
+      username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
+      password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
+      max-lifetime: 600000 #default 30분(1800000 ms) < mysql wait_timeout (default: 28800) 8시간보다 작게
+      connection-timeout: 30000 #default 30초
+      validation-timeout: 5000 #default 5초
+      maximum-pool-size: 3
 
 jasypt:
   encryptor:
     bean: jasyptStringEncryptor
-    # STG
-    password: ZnNzd21zd21zMTIzNDU2Nzg5MGFiY2RlZmZzc3dtczI=
-
-logging:
-  pattern:
-    console: "[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
-
+    #DEV
+    password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
 
 sweettracker.url: http://trace-api-dev.sweettracker.net:8102
 sweet:
-  callback_url: http://49.1.133.140:8080/invoice/callback
+  callback_url: https://dev-delivery.fassto.ai/sweet/callback
   callback_type: json
   type: json
   tier: testuser

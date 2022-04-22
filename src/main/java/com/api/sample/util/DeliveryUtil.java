@@ -29,6 +29,14 @@ public class DeliveryUtil {
             comcode = "05";
         }else if("LOTTE".equals(parcelCd)){
             comcode = "08";
+        }else if("CHAINLOGIS".equals(parcelCd)){
+            comcode = "89";
+        }else if("EPOST".equals(parcelCd)){
+            comcode = "01";
+        }else if("KDEXP".equals(parcelCd)){
+            comcode = "23";
+        }else if("UPS".equals(parcelCd)){
+            comcode = "14";
         }
         return comcode;
     }

@@ -14,6 +14,6 @@ public class InvoiceRequestListVO {
     public InvoiceRequestListVO(String num, String code){
         setNum(num);
         setCode(DeliveryUtil.getCompanyCode(code));
-        setFid(getCode() + num);
+        setFid(getCode()+"_"+num);
     }
 }

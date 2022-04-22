@@ -1,14 +1,20 @@
+greeting:
+  message: this is main application-stg.yaml
+
 spring:
   datasource:
-    jdbc-url: jdbc:log4jdbc:mysql://13.124.196.157:3306/fsswms
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    username: fsswms
-    password: FssWmsDev#0526
+    dbcp2:
+      validation-query: SELECT 1
+      test-on-borrow: true
     hikari:
-      connection-timeout: 5000
-      validation-timeout: 1000
-      maximum-pool-size: 30
-      minimum-idle: 2
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: ENC(r0bC9ISIaT9RVfQNla3WYLY10ffu9rEH+m74Fog2EzwHk5bm8DwKPpdlyEsBRoF7FgXdVKLId6e9ywZe0+/p1jZtJXybnb1rwDPHVAIveJk=) #autoReconnect=true 적용
+      username: ENC(ZURfTb9YJ6F7RMYvEZbqKA==)
+      password: ENC(WvtAGVt59Exf3yv9mA1iCk6ksCSeGYvC)
+      max-lifetime: 600000 #default 30분(1800000 ms) < mysql wait_timeout (default: 28800) 8시간보다 작게
+      connection-timeout: 30000 #default 30초
+      validation-timeout: 5000 #default 5초
+      maximum-pool-size: 3
 
 jasypt:
   encryptor:
@@ -16,16 +22,9 @@ jasypt:
     # STG
     password: ZnNzd21zd21zMTIzNDU2Nzg5MGFiY2RlZmZzc3dtczI=
 
-logging:
-  pattern:
-    console: "[STG] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n"
-
-
-#api.url: http://trace-api-dev.sweettracker.net:8102
-api.url: http://localhost:8080
 sweettracker.url: http://trace-api-dev.sweettracker.net:8102
 sweet:
-  callback_url: http://49.1.133.140:8080/invoice/callback
+  callback_url: https://dev-delivery.fassto.ai/sweet/callback
   callback_type: json
   type: json
   tier: testuser
