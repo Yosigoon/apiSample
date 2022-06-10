@@ -1,23 +1,21 @@
 package com.api.sample.api.vo.sweettracker.fms;
 
-import lombok.Data;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 @Getter
 public class AddInvoiceListRequestParamVo {
-    @NotEmpty @Valid
-    private List<AddInvoiceListVO> list;
+    @ApiModelProperty(position = 1, example = "20220504", required = true)
+    @NotBlank
+    private String packDt;      //패킹완료일자
 
-    @Data
-    public static class AddInvoiceListVO{
-        @NotBlank
-        private String invoiceNo; //FMS에서 전달받은 송장번호
-        @NotBlank
-        private String parcelCd;  //FMS에서 전달받은 택배사코드명
-    }
+    @ApiModelProperty(position = 2, example = "YI01", required = true)
+    @NotBlank
+    private String whCd;        //센터코드
+
+    @ApiModelProperty(position = 3, example = "HANJIN", required = true)
+    @NotBlank
+    private String parcelCd;    //택배사코드
 }

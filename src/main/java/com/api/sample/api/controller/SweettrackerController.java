@@ -33,18 +33,6 @@ public class SweettrackerController {
 
 
     /**
-     * n건 운송장 추적 요청 API
-     * @param addInvoiceListRequestParamVo
-     * @return
-     */
-    @ApiOperation(value = "n건 운송장 추적 요청", hidden = true)
-    @PostMapping("/add_invoice_list")
-    public AddInvoiceListResponseVO callAddInvoiceList(@RequestBody @Valid AddInvoiceListRequestParamVo addInvoiceListRequestParamVo) {
-        return sweettrackerService.callAddInvoiceList(addInvoiceListRequestParamVo);
-    }
-
-
-    /**
      * 운송장 추적정보 수신(callback)
      * @param callbackAddInvoiceRequestVO
      * @return
@@ -64,6 +52,18 @@ public class SweettrackerController {
     @GetMapping("/company_list")
     public List<CompanyListVO> callCompanyList(){
         return sweettrackerService.callCompanyList();
+    }
+
+
+    /**
+     * n건 운송장 추적 요청 API
+     * @param addInvoiceListRequestParamVo
+     * @return
+     */
+    @ApiOperation(value = "n건 운송장 추적 요청(오픈 전 1주일 호출용)")
+    @PostMapping("/add_invoice_list")
+    public void callAddInvoiceList(@RequestBody @Valid AddInvoiceListRequestParamVo addInvoiceListRequestParamVo) throws InterruptedException {
+        sweettrackerService.callAddInvoiceList(addInvoiceListRequestParamVo);
     }
 }
 

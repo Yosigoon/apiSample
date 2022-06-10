@@ -8,6 +8,7 @@ import com.api.sample.api.vo.sweettracker.fms.AddInvoiceRequestParamVo;
 import com.api.sample.enums.SweetCode;
 import com.api.sample.feign.SweettrackerFeignClient;
 import com.api.sample.util.DeliveryUtil;
+import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -93,39 +94,6 @@ public class SweettrackerService {
     }
 
     /**
-     * n건 운송장 추적 요청 API
-     * @param addInvoiceListRequestParamVo
-     * @return
-     */
-    public AddInvoiceListResponseVO callAddInvoiceList(AddInvoiceListRequestParamVo addInvoiceListRequestParamVo) {
-
-        List<InvoiceRequestListVO> invoiceRequestList = new ArrayList<>();
-        for (int i = 0; i < addInvoiceListRequestParamVo.getList().size(); i++) {
-            invoiceRequestList.add(new InvoiceRequestListVO(addInvoiceListRequestParamVo.getList().get(i).getInvoiceNo(), addInvoiceListRequestParamVo.getList().get(i).getParcelCd()));
-            //전송내역 저장
-            //sweettrackerMapper.insertInvoiceListHistory(invoiceRequestList);
-        }
-        AddInvoiceListRequestVO addInvoiceListRequestVO = AddInvoiceListRequestVO.builder()
-                .callback_url(callback_url)
-                .callback_type(callback_type)
-                .tier(tier)
-                .key(key)
-                .list(invoiceRequestList)
-                .build();
-
-        //스윗트래커 n건 운송장 추적 요청 API 호출
-        AddInvoiceListResponseVO addInvoiceListResponseVO = sweettrackerFeignClient.callAddInvoiceList(addInvoiceListRequestVO);
-        log.info("AddInvoiceListResponse: {}", addInvoiceListResponseVO);
-
-        for (int i = 0; i < addInvoiceListResponseVO.getList().size(); i++) {
-            //전송내역 업데이트
-            //sweettrackerMapper.updateInvoiceListHistory(addInvoiceListResponseVO);
-        }
-
-        return addInvoiceListResponseVO;
-    }
-
-    /**
      * 운송장 추적정보 수신(callback)
      * @param callbackAddInvoiceRequestVO
      * @return
@@ -152,6 +120,54 @@ public class SweettrackerService {
      */
     public List<CompanyListVO> callCompanyList() {
         return sweettrackerFeignClient.callComplayList();
+    }
+
+    /**
+     * n건 운송장 추적 요청 API
+     * @param addInvoiceListRequestParamVo
+     * @return
+     */
+    public void callAddInvoiceList(AddInvoiceListRequestParamVo addInvoiceListRequestParamVo) throws InterruptedException {
+        int chunkSize = 500;
+        List<String> invoiceListVO = deliveryGatewayService.selectInvoiceList(addInvoiceListRequestParamVo);
+        List<List<String>> partition = Lists.partition(invoiceListVO, chunkSize);
+        for (int i = 0; i < partition.size(); i++){
+            AddInvoiceListRequestVO addInvoiceListRequestVO = new AddInvoiceListRequestVO();
+            List<InvoiceRequestListVO> invoiceRequestList = new ArrayList<>();
+
+            for(int j = 0; j < partition.get(i).size(); j++){
+                String num = partition.get(i).get(j); //송장번호
+                String code = DeliveryUtil.getCompanyCode(addInvoiceListRequestParamVo.getParcelCd()); //택배사코드 변환
+                addInvoiceListRequestVO.setCallback_url(callback_url);
+                addInvoiceListRequestVO.setCallback_type(callback_type);
+                addInvoiceListRequestVO.setTier(tier);
+                addInvoiceListRequestVO.setKey(key);
+                invoiceRequestList.add(new InvoiceRequestListVO(num, addInvoiceListRequestParamVo.getParcelCd()));
+                addInvoiceListRequestVO.setList(invoiceRequestList);
+
+                AddInvoiceRequestVO addInvoiceRequestVO = AddInvoiceRequestVO.builder()
+                        .fid(code + "_" + num)
+                        .num(num)
+                        .code(code)
+                        .build();
+                //전송내역 저장
+                addInvoiceRequestVO.setRegId(SweetCode.REG_ID.getCode());
+                addInvoiceRequestVO.setModId(SweetCode.MOD_ID.getCode());
+                sweettrackerMapper.insertInvoiceHistory(addInvoiceRequestVO);
+            }
+            //스윗트래커 n건 운송장 추적 요청 API 호출
+            AddInvoiceListResponseVO addInvoiceListResponseVO = sweettrackerFeignClient.callAddInvoiceList(addInvoiceListRequestVO);
+            for(AddInvoiceResponseListVO vo : addInvoiceListResponseVO.getList()){
+                AddInvoiceResponseVO addInvoiceResponseVO = new AddInvoiceResponseVO();
+                addInvoiceResponseVO.setSuccess("true".equals(vo.getSuccess()));
+                addInvoiceResponseVO.setFid(vo.getFid());
+                addInvoiceResponseVO.setE_code(vo.getE_code());
+                addInvoiceResponseVO.setE_message(vo.getE_message());
+                //전송내역 업데이트
+                sweettrackerMapper.updateInvoiceHistory(addInvoiceResponseVO);
+            }
+            Thread.sleep(2500);
+        }
     }
 
 

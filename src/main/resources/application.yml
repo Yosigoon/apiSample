@@ -1,29 +1,4 @@
 # application.yml엔 공통으로 적용할 설정을 적는다.
-greeting:
-  message: this is main application-local.yaml
-
-spring:
-  datasource:
-    dbcp2:
-      validation-query: SELECT 1
-      test-on-borrow: true
-    hikari:
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      jdbc-url: ENC(tfJcchAIF/rSuejsN6D79T4GjPL5Z89KTlA4TfBEjCyJUQJz8dEwznUGG/R9UjAhN5HClhZK7Ua6ccbTB7bhQexjZ31uCXkg8ftUJrUNfc0=) #autoReconnect=true 적용
-      username: ENC(6M6IbMJQVkVuuQU8XCa9XQ==)
-      password: ENC(TKMJVjS1KBeDLg4wxoYm2kI9y4NKQFbI)
-      max-lifetime: 600000 #default 30분(1800000 ms) < mysql wait_timeout (default: 28800) 8시간보다 작게
-      connection-timeout: 30000 #default 30초
-      validation-timeout: 5000 #default 5초
-      maximum-pool-size: 3
-
-
-jasypt:
-  encryptor:
-    bean: jasyptStringEncryptor
-    #DEV
-    password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
-
 server:
   port: 8080
   servlet:
@@ -43,8 +18,8 @@ feign:
         decode404: false
 
       delivery-gateway:
-        connectTimeout: 10000
-        readTimeout: 10000
+        connectTimeout: 30000
+        readTimeout: 30000
         loggerLevel: full
         decode404: false
 
@@ -60,45 +35,9 @@ mybatis:
     default-fetch-size: 1000 #설정하지 않으면 기본 값은 10 (ex: fetchSize 가 10 이면 5000건을 조회하면 실제 db에서 500번을 조회)
 
 
-logging:
-  file:
-    path: ./logs
-
-## Log Pattern
-# %logger: 패키지 포함 클래스 정보
-# %logger{0}: 패키지를 제외한 클래스 이름만 출력
-# %logger{length}: Logger name을 축약할 수 있음. {length}는 최대 자리 수, ex)logger{35}
-# %-5level: 로그 레벨, -5는 출력의 고정폭 값(5글자), 로깅레벨이i nfo일 경우 빈칸 하나 추가
-# ${PID:-}: 프로세스 아이디
-# %d: 로그 기록시간 출력
-# %p: 로깅 레벨 출력
-# %F: 로깅이 발생한 프로그램 파일명 출력
-# %M: 로깅일 발생한 메소드의 명 출력
-# %line: 로깅이 발생한 호출지의 라인
-# %L: 로깅이 발생한 호출지의 라인
-# %thread: 현재 Thread 명
-# %t: 로깅이 발생한 Thread 명
-# %c: 로깅이 발생한 카테고리
-# %C: 로깅이 발생한 클래스 명 (%C{2}는 somePackage.SomeClass 가 출력됨)
-# %m: 로그 메시지
-# %msg: - 로그 메시지 (=%message)
-# %n: 줄바꿈(new line)
-# %%: %를 출력
-# %r : 애플리케이션 시작 이후부터 로깅이 발생한 시점까지의 시간(ms)
-# %d{yyyy-MM-dd-HH:mm:ss:sss}: %d는 date를 의미하며 중괄호에 들어간 문자열은 dateformat을 의미. 따라서 [2021-07-12 12:42:78]과 같은 날짜가 로그에 출력됨.
-# %-4relative: %relative는 초 아래 단위 시간(밀리초)을 나타냄. -4를하면 4칸의 출력폼을 고정으로 가지고 출력. 따라서 숫자에 따라 [2021-07-12 12:42:78:232] 혹은 [2021-07-12 12:42:78:2332]와 같이 표현됨
-
-# fileNamePattern에서 %i와 %d가 필수적으로 포함
-# %i: 롤링 순번을 자동적으로 지정함 (ex) 0, 1, 2 , 3 ...)
-
-api.url: http://localhost:8080
-sweettracker.url: http://trace-api-dev.sweettracker.net:8102
-sweet:
-  callback_url: https://dev-delivery.fassto.ai/sweet/callback
-  callback_type: json
-  type: json
-  tier: testuser
-  key: testuser
-
-
-
+    #logging:
+    #file:
+    #path: ./fss/logs/deliveryGateway
+    #level:
+    #com.zaxxer.hikari.HikariConfig: TRACE
+    #com.zaxxer.hikari: DEBUG

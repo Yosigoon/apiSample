@@ -89,4 +89,15 @@
         ORDER BY TIME_TRANS DESC
     </select>
 
+    <select id="selectInvoiceList" parameterType="AddInvoiceListRequestParamVo" resultType="String">
+        /* DeliveryGatewayMapper.selectInvoiceList */
+        SELECT
+            INVOICE_NO
+        FROM TB_OUT_PACK
+        WHERE PACK_DT = #{packDt}
+          AND WH_CD = #{whCd}
+          AND PARCEL_CD = #{parcelCd}
+        GROUP BY INVOICE_NO
+    </select>
+
 </mapper>
