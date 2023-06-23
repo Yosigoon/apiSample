@@ -23,6 +23,12 @@ feign:
         loggerLevel: full
         decode404: false
 
+      opinet:
+        connectTimeout: 30000
+        readTimeout: 30000
+        loggerLevel: full
+        decode404: false
+
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
