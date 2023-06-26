@@ -20,16 +20,6 @@ jasypt:
     #LOCAL
     password: ZnNzd21zMTIzNDU2Nzg5MGZzc3dtczEyMzQ1Njc4OTA=
 
-api.url: http://localhost:8080
-
-sweettracker.url: http://trace-api-dev.sweettracker.net:8102
-sweet:
-  callback_url: https://dev-delivery.fassto.ai/sweet/callback
-  callback_type: json
-  type: json
-  tier: testuser
-  key: testuser
-
 opinet:
   key: F230623166
   url: http://www.opinet.co.kr/api

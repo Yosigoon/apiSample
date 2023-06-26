@@ -1,5 +1,6 @@
 package com.api.sample.util;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,14 +17,35 @@ import java.util.Map;
 
 @Slf4j
 @Component
-public class OpinetUtil {
+public class OpinetUtils {
 
+    private OpinetUtils() {}
     @Value("${opinet.url}")
-    private String HOST_URL;
+    private String hostUrl;
+
+    public <T> Map<String, String> convertToMap(T object) {
+        Map<String, String> map = new HashMap<>();
+        try {
+            Class<?> clazz = object.getClass();
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String fieldName = field.getName();
+                Object value = field.get(object);
+                if (value != null) {
+                    map.put(fieldName, value.toString());
+                }
+            }
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
     public StringBuilder sendGetRequest(String actionUrl, Map<String, String> parameters) {
         try {
             // 파라미터 인코딩 및 URL에 추가
-            StringBuilder urlBuilder = new StringBuilder(HOST_URL+actionUrl);
+            StringBuilder urlBuilder = new StringBuilder(hostUrl+actionUrl);
             if (parameters != null && !parameters.isEmpty()) {
                 urlBuilder.append("?");
                 for (Map.Entry<String, String> entry : parameters.entrySet()) {
@@ -68,24 +90,5 @@ public class OpinetUtil {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public static <T> Map<String, String> convertToMap(T object) {
-        Map<String, String> map = new HashMap<>();
-        try {
-            Class<?> clazz = object.getClass();
-            Field[] fields = clazz.getDeclaredFields();
-            for (Field field : fields) {
-                field.setAccessible(true);
-                String fieldName = field.getName();
-                Object value = field.get(object);
-                if (value != null) {
-                    map.put(fieldName, value.toString());
-                }
-            }
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return map;
     }
 }

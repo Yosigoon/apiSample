@@ -1,4 +1,4 @@
-package com.api.sample.api.vo.opinet;
+package com.api.sample.api.vo.opinet.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -9,8 +9,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class SigunPrice {
+
     private String code;
     private String out;
+
     @ApiModelProperty(position = 1, example = "시도코드 2자리", required = true)
     private String sido;
 

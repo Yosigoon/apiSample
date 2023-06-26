@@ -16,19 +16,17 @@ public class ApiFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
-        log.info("=====================Filter TEST  : init ApiFilter=====================");
+        log.info("## [Init ApiFilter] ##");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("=====================Filter TEST  : doFilter=====================");
-        log.info("doFilter ApiFilter, uri : {}", ((HttpServletRequest)servletRequest).getRequestURI());
-        log.info("=====================Filter TEST  : doFilter=====================");
+        log.info("## [doFilter ApiFilter] uri : {}", ((HttpServletRequest)servletRequest).getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-        log.info("=====================Filter TEST  : destroy ApiFilter=====================");
+        log.info("## [destroy ApiFilter] ##");
     }
 }

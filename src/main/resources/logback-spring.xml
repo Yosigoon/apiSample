@@ -18,7 +18,7 @@
         </springProfile>
         <springProfile name="liv">
             <encoder>
-                <pattern>[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+                <pattern>[PROD] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
             </encoder>
         </springProfile>
     </appender>
@@ -49,12 +49,12 @@
         </springProfile>
         <springProfile name="liv">
             <encoder>
-                <pattern>[LIV] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
+                <pattern>[PROD] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%logger.%method:line-%line] - %msg%n</pattern>
             </encoder>
         </springProfile>
     </appender>
 
-    <logger name="com.delivery.gateway" additivity="false">
+    <logger name="com.api.sample" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="LOG_FILE"/>

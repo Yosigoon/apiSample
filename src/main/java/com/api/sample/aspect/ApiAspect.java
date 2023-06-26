@@ -44,9 +44,9 @@ public class ApiAspect {
     public void before(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         LogThreadLocal.myLogThreadLocal.set(request.getHeader("traceUUID"));
-        log.info("=====================AspectJ TEST  : Before Logging Start=====================");
-        log.info("=====================ThreadLocal TEST  : "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
-        log.info("=====================AspectJ TEST  : Before Logging End=====================");
+        log.info("===================== AspectJ: Before Logging Start=====================");
+        log.info("===================== ThreadLocal: "+ LogThreadLocal.myLogThreadLocal.get() +"=====================");
+        log.info("===================== AspectJ: Before Logging End=====================");
     }
 
     /**
@@ -56,8 +56,8 @@ public class ApiAspect {
     @AfterReturning(pointcut = "requestMapping()", returning = "result")
     public void AfterReturning(JoinPoint joinPoint, Object result) {
         LogThreadLocal.myLogThreadLocal.remove();
-        log.info("=====================AspectJ TEST  : AfterReturning Logging Start=====================");
-        log.info("=====================AspectJ TEST  : AfterReturning Logging END=====================");
+        log.info("===================== AspectJ: AfterReturning Logging Start=====================");
+        log.info("===================== AspectJ: AfterReturning Logging END=====================");
     }
 
     /**
@@ -68,13 +68,13 @@ public class ApiAspect {
      */
     @Around("requestMapping()")
     public Object Around(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("=====================AspectJ TEST  : Around Logging Start=====================");
+        log.info("===================== AspectJ: Around Logging Start=====================");
         Object result = joinPoint.proceed();
         try {
-            log.info("=====================AspectJ TEST  : Around Logging END=====================");
+            log.info("===================== AspectJ: Around Logging END=====================");
             log.info(result.toString());
         }catch (Exception e) {
-            log.error("=====================AspectJ Around Exception=====================");
+            log.error("===================== AspectJ Around Exception=====================");
             log.error(e.toString());
         }
         return result;
