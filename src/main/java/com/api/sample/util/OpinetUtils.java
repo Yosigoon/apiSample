@@ -77,9 +77,9 @@ public class OpinetUtils {
                 reader.close();
 
                 // 응답 출력
-                log.info("Response: {}", response);
+                log.info("## [" + actionUrl + "] Response: {}", response);
             } else {
-                log.error("Error: {}", responseCode);
+                log.error("## [" + actionUrl + "] Error: {}", responseCode);
 
             }
 
