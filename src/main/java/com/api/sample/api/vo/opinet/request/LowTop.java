@@ -9,8 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class LowTop {
-
+    @ApiModelProperty(hidden = true)
     private String code;
+    @ApiModelProperty(hidden = true)
     private String out;
     @ApiModelProperty(position = 1, required = true, example = "B034:고급휘발유, B027:보통휘발유, D047:자동차경유, C004:실내등유, K015:자동차부탄 (미입력시 모든 제품 조회)")
     private String prodcd;

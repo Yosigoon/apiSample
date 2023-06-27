@@ -10,7 +10,10 @@ import lombok.ToString;
 @ToString
 public class AreaPollAvgRecentPrice {
 
+    @ApiModelProperty(hidden = true)
     private String code;
+
+    @ApiModelProperty(hidden = true)
     private String out;
 
     @ApiModelProperty(position = 1, required = true, example = "시도코드(2자리): 해당시도 기준, 시군코드(4자리) : 해당시군 기준")
