@@ -9,7 +9,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AreaCode {
+    @ApiModelProperty(hidden = true)
     private String code;
+    @ApiModelProperty(hidden = true)
     private String out;
     @ApiModelProperty(position = 1, example = "시군구 코드 (미입력시 전체)")
     private String area;
