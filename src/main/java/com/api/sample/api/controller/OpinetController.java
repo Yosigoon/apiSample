@@ -84,6 +84,7 @@ public class OpinetController {
     public Response getDetailById(@Valid DetailById detailById) throws JsonProcessingException {
         return opinetService.getDetailById(detailById);
     }
+
 }
 
 
