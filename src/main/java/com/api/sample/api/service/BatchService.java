@@ -36,7 +36,7 @@ public class BatchService {
 
     private final SlackUtil slackUtil;
 
-    @Scheduled(cron = "0 30 0,7,10 * * *")
+    @Scheduled(cron = "0 30 9,12,16,19 * * *")
     public void myOilInfo() throws JsonProcessingException {
         DetailById detailById = new DetailById();
         detailById.setCode(code);
