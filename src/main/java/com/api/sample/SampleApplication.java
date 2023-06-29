@@ -6,12 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @ServletComponentScan
 @EnableAspectJAutoProxy
 @EnableFeignClients
 @SpringBootApplication
+@EnableScheduling
 public class SampleApplication {
 
     public static void main(String[] args) {

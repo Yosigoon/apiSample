@@ -26,15 +26,15 @@ public class OpinetService {
     private final ObjectMapper objectMapper;
 
     /* 공통화 및 최적화 function */
-    private Map<String, String> convertToMap(Object object) {
+    public Map<String, String> convertToMap(Object object) {
         return opinetUtils.convertToMap(object); //프라이빗으로 추출하여 중복을 제거
     }
 
-    private StringBuilder sendGetRequest(String url, Map<String, String> paramMap) {
+    public StringBuilder sendGetRequest(String url, Map<String, String> paramMap) {
         return opinetUtils.sendGetRequest(url, paramMap); //프라이빗으로 추출하여 중복을 제거
     }
 
-    private Response getResponse(StringBuilder stringBuilder) throws JsonProcessingException {
+    public Response getResponse(StringBuilder stringBuilder) throws JsonProcessingException {
         String xml = String.valueOf(stringBuilder);
         JSONObject jsonObject = XML.toJSONObject(xml);
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);

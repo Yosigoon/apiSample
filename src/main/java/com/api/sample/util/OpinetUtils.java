@@ -12,6 +12,8 @@ import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,5 +92,37 @@ public class OpinetUtils {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public String convertPollDivCo(String pollDivCo) {
+        switch (pollDivCo) {
+            case "SKE": return "SK에너지";
+            case "GSC" : return "GS칼텍스";
+            case "HDO" : return "현대오일뱅크";
+            case "SOL" : return "S-OIL";
+            case "RTO" : return "자영알뜰";
+            case "RTX" : return "고속도로알뜰";
+            case "NHO" : return "농협알뜰";
+            case "ETC" : return "자가상표";
+            default: return pollDivCo;
+        }
+    }
+
+    public String convertDateTime(int tradeDate, int tradeTime) {
+        // "TRADE_DT"를 날짜 문자열로 변환
+        String dateString = String.valueOf(tradeDate);
+        String formattedDate = dateString.substring(0, 4) + "-" + dateString.substring(4, 6) + "-" + dateString.substring(6, 8);
+
+        // "TRADE_TM"을 시간 문자열로 변환
+        String tradeString = String.valueOf(tradeTime);
+        String formattedTime = tradeString.substring(0, 2) + ":" + tradeString.substring(2, 4) + ":" + tradeString.substring(4, 6);
+
+        // 날짜와 시간을 합쳐서 LocalDateTime 객체 생성
+        LocalDateTime dateTime = LocalDateTime.parse(formattedDate + " " + formattedTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        // "yyyy-MM-dd HH:mm:ss" 형식으로 변환
+        String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        return formattedDateTime;
     }
 }
