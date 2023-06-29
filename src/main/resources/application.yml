@@ -28,9 +28,6 @@ mybatis:
     default-fetch-size: 1000 #설정하지 않으면 기본 값은 10 (ex: fetchSize 가 10 이면 5000건을 조회하면 실제 db에서 500번을 조회)
 
 
-    #logging:
-    #file:
-    #path: ./fss/logs/deliveryGateway
-    #level:
-    #com.zaxxer.hikari.HikariConfig: TRACE
-    #com.zaxxer.hikari: DEBUG
+logging:
+  file:
+    path: /home/ec2-user/logs
