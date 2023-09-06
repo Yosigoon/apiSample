@@ -21,7 +21,7 @@ public class ApiFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("## [doFilter ApiFilter] uri : {}", ((HttpServletRequest)servletRequest).getRequestURI());
+        log.info("## Request URI : [{}] {}", ((HttpServletRequest)servletRequest).getMethod(), ((HttpServletRequest)servletRequest).getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
