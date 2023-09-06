@@ -30,4 +30,4 @@ mybatis:
 
 logging:
   file:
-    path: /home/ec2-user/logs
+    path: /home/logs
