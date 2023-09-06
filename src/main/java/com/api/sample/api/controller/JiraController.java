@@ -38,14 +38,14 @@ public class JiraController {
             }
             builder.append(buffer);
         }
-        log.info(builder.toString());
+        log.debug(builder.toString());
     }
 
     @GetMapping("/webhook")
     public void jiraWebHookGET(HttpServletRequest request) throws IOException {
         Set<String> keySet = request.getParameterMap().keySet();
         for(String key: keySet) {
-            log.info("{}: {}", key, request.getParameter(key));
+            log.debug("{}: {}", key, request.getParameter(key));
         }
     }
 }

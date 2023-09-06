@@ -45,7 +45,7 @@ public class OpinetService {
     /* API Service */
 
     public Response getAreaCode(AreaCode areaCode) throws JsonProcessingException {
-        log.info("## API: getAreaCode, Object: {}", areaCode);
+        log.debug("## API: getAreaCode, Object: {}", areaCode);
         areaCode.setCode(code);
         Map<String, String> paramMap = convertToMap(areaCode);
         StringBuilder stringBuilder = sendGetRequest("/areaCode.do", paramMap);
@@ -54,7 +54,7 @@ public class OpinetService {
     }
 
     public Response getSigunPrice(SigunPrice sigunPrice) throws JsonProcessingException {
-        log.info("## API: getSigunPrice, Object: {}", sigunPrice);
+        log.debug("## API: getSigunPrice, Object: {}", sigunPrice);
         sigunPrice.setCode(code);
         Map<String, String> paramMap = convertToMap(sigunPrice);
         StringBuilder stringBuilder = sendGetRequest("/avgSigunPrice.do", paramMap);
@@ -64,7 +64,7 @@ public class OpinetService {
 
 
     public Response getPollAvgRecentPrice(PollAvgRecentPrice pollAvgRecentPrice) throws JsonProcessingException {
-        log.info("## API: getPollAvgRecentPrice, Object: {}", pollAvgRecentPrice);
+        log.debug("## API: getPollAvgRecentPrice, Object: {}", pollAvgRecentPrice);
         pollAvgRecentPrice.setCode(code);
         Map<String, String> paramMap = convertToMap(pollAvgRecentPrice);
         StringBuilder stringBuilder = sendGetRequest("/pollAvgRecentPrice.do", paramMap);
@@ -73,7 +73,7 @@ public class OpinetService {
     }
 
     public Response getAreaAvgRecentPrice(AreaPollAvgRecentPrice areaPollAvgRecentPrice) throws JsonProcessingException {
-        log.info("## API: getAreaAvgRecentPrice, Object: {}", areaPollAvgRecentPrice);
+        log.debug("## API: getAreaAvgRecentPrice, Object: {}", areaPollAvgRecentPrice);
         areaPollAvgRecentPrice.setCode(code);
         Map<String, String> paramMap = convertToMap(areaPollAvgRecentPrice);
         StringBuilder stringBuilder = sendGetRequest("/areaAvgRecentPrice.do", paramMap);
@@ -82,7 +82,7 @@ public class OpinetService {
     }
 
     public Response getLowTop10(LowTop lowTop) throws JsonProcessingException {
-        log.info("## API: getLowTop10, Object: {}", lowTop);
+        log.debug("## API: getLowTop10, Object: {}", lowTop);
         lowTop.setCode(code);
         Map<String, String> paramMap = convertToMap(lowTop);
         StringBuilder stringBuilder = sendGetRequest("/lowTop10.do", paramMap);
@@ -91,7 +91,7 @@ public class OpinetService {
     }
 
     public Response getDetailById(DetailById detailById) throws JsonProcessingException {
-        log.info("## API: getDetailById, Object: {}", detailById);
+        log.debug("## API: getDetailById, Object: {}", detailById);
         detailById.setCode(code);
         Map<String, String> paramMap = convertToMap(detailById);
         StringBuilder stringBuilder = sendGetRequest("/detailById.do", paramMap);
